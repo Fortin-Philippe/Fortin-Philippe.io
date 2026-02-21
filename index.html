@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TP1 – Création d'un appareil de sécurité réseau</title>
+    <p class="text-center">Philippe Fortin</p>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            padding-top: 80px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: #ffffff;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .content-box {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        nav {
+            background-color: #000 !important;
+        }
+
+        nav a {
+            color: #ccc !important;
+        }
+
+        nav a:hover {
+            color: #fff !important;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+        }
+
+        .content-box {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">TP1</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#mise-en-situation">Mise en situation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#materiel">Matériel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experimentation">Expérimentation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#analyse">Analyse</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#conclusion">Conclusion</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h1 class="text-center mb-5">TP1 – Création d'un appareil de sécurité réseau</h1>
+        <div id="mise-en-situation" class="section content-box">
+            <h2>Mise en situation</h2>
+
+            <div>
+                <h4>Problématique</h4>
+                <p>
+                    Le développement technologique est un sujet très présent dans notre société. De plus en plus, les
+                    gens se munissent de cellulaires et d’appareils de tout genre afin d’être connectés partout, tout le
+                    temps. Traîner ses appareils avec soi amène son lot de défis concernant la sécurité de ceux ci. En
+                    effet, selon le site Web pensezcybersecurite.gc.ca du gouvernement du Canada, « 87 % des
+                    consommateurs ont potentiellement risqué de compromettre leurs renseignements personnels en
+                    utilisant des Wi Fi publics ».
+                </p>
+            </div>
+
+            <div>
+                <h4>Piste de solution</h4>
+                <p>
+                    Afin de remédier à cette problématique, il serait intéressant d’avoir un intermédiaire entre un
+                    réseau Wi-Fi public potentiellement dangereux et nos appareils. Il existe plusieurs façons de
+                    protéger un
+                    réseau, que ce soit avec l’aide d’un VPN ou de bloqueurs de publicités. Cet appareil devrait être
+                    portatif, il devrait pouvoir recevoir un Wi Fi public, appliquer une protection et renvoyer un Wi Fi
+                    sécurisé.
+                </p>
+            </div>
+
+            <div>
+                <h4>Solution</h4>
+                <p>
+                    Après quelques recherches et analyses, une solution intéressante serait d’utiliser un Raspberry Pi
+                    qui effectuerait un pont parfait entre les deux réseaux. Il est portatif et suffisamment puissant
+                    pour obtenir ce que l’on recherche. Cependant, ces composantes seules ne seraient pas suffisantes
+                    pour répéter un Wi Fi : il nous faudrait une antenne Wi Fi ainsi qu’une batterie portative afin de
+                    pouvoir le transporter partout.
+                </p>
+            </div>
+        </div>
+
+        <div id="materiel" class="section content-box">
+            <h2>Matériel utilisé</h2>
+
+            <h4>1. Raspberry Pi 4</h4>
+            <ul>
+                <li>Fabricant : Raspberry Pi</li>
+                <li>Module Wi Fi/Bluetooth</li>
+                <li>Prise Ethernet</li>
+                <li>USB 3.0, 2.0</li>
+                <li>Port USB C</li>
+            </ul>
+            <img src="img/raspberry-pi.png" alt="Image de Raspberry Pi" class="img-fluid">
+            <h4>2. Antenne Wi Fi 2,4G</h4>
+            <ul>
+                <li>Fabricant : Lazycloud</li>
+                <li>Modèle : RT5370</li>
+            </ul>
+
+            <h4>Logiciel utilisé</h4>
+            <p><strong>OpenWrt :</strong> système d’exploitation utilisé principalement pour des routeurs. Il permet de
+                gérer les connexions réseau passantes.</p>
+            <p><strong>ProtonVPN :</strong> choisi pour son faible coût pour une courte durée.</p>
+        </div>
+
+        <div id="experimentation" class="section content-box">
+            <h2>Expérimentation</h2>
+
+            <h4>Étape 1 : Configuration</h4>
+            <p>
+                Pour débuter, j’ai dû insérer ma carte SD dans mon ordinateur et télécharger OpenWrt à l’intérieur. Par
+                la suite, j’ai réinséré ma carte SD et j’ai connecté un fil Ethernet de mon Raspberry Pi à mon
+                ordinateur, configuré les ports sur une adresse IP et effectué les changements à mon réseau afin que la
+                carte Wi Fi puisse se connecter à Internet. Finalement, j’ai changé l’adresse IP de mon Pi et j’ai lancé
+                le Wi Fi.
+            </p>
+            <img src="img/experimentation1.png" alt="Image de Raspberry Pi avec fil Ethernet" class="img-fluid">
+
+            <h4>Étape 2 : Configuration de l’antenne Wi Fi</h4>
+            <p>
+                À la première tentative, mon ancienne antenne ne fonctionnait pas pour projeter le Wi Fi : elle ne
+                fonctionnait que pour recevoir. Donc, j’ai fait une commande Amazon afin d’avoir une antenne qui
+                projette. Lors de l’arrivée de la bonne antenne, j’ai installé les pilotes nécessaires à son bon
+                fonctionnement et je l’ai configurée afin qu’elle projette mon nouveau réseau configuré.
+            </p>
+            <img src="img/experimentation2.jpg" alt="Image de Raspberry Pi connecté" class="img-fluid">
+
+            <h4>Étape 3 : Installation de ProtonVPN</h4>
+            <p>
+                Une fois mon réseau fonctionnel, j’ai installé ProtonVPN pour protéger mon réseau davantage. J’ai
+                installé les packages nécessaires à son bon fonctionnement et travaillé sur l’interface LuCI de OpenWrt.
+                Afin de vérifier qu’il fonctionnait correctement, j’ai vérifié le changement d’adresse et vérifié qu’il
+                affichait bien l’adresse IP de Proton de Toronto. Le VPN sert également de bloqueur de publicités.
+            </p>
+            <img src="img/anti-virus.png" alt="Image de blocage de virus" class="img-fluid">
+            <p>La page de publicité est bloquée par ProtonVPN</p>
+            <img src="img/ip.png" alt="Image d'adresse Ip de Proton" class="img-fluid">
+            <p>L'adresse IP est une adresse qui appartient à Proton VPN</p>
+        </div>
+
+        <div id="analyse" class="section content-box">
+            <h2>Analyse</h2>
+
+            <h4>Avis</h4>
+            <p>
+                Le projet que j’ai réalisé a été un succès et je crois qu’il me sera utile lors de mes prochains
+                voyages. En ayant un routeur protégé, il sera plus simple de partager un Wi Fi avec mes partenaires de
+                voyage sans avoir besoin d’installer mon VPN sur chacun de nos appareils. En prenant en compte que
+                certains VPN limitent le nombre de machines qui y sont connectées, je n’aurai pas ce problème.
+            </p>
+
+            <h4>Longévité</h4>
+            <p>
+                En utilisant une batterie portative et en traînant une prise de courant, le réseau ne risque pas de
+                manquer quand on en a besoin, sachant que la plupart des lieux publics ont de l’électricité de comprise.
+                Pour l’instant, mon Raspberry Pi n’a pas de protection extérieure, mais avec cette protection, je
+                pourrais le protéger davantage et ça me permettrait d’avoir un vrai petit routeur portable. Pour
+                l’instant, il est assez fragile.
+            </p>
+
+            <h4>Stabilité</h4>
+            <p>
+                J’ai observé certains problèmes de stabilité lors de mes tests. Il semble qu’il ne reste pas toujours
+                opérationnel : je dois donc le redémarrer. Je crois que ce problème vient de l’instabilité de mon réseau
+                à domicile, qui a tendance à se déconnecter sans raison, ce qui est possible de se produire sur les
+                réseaux publics également. Donc, il doit servir pour des cas plus spontanés que permanents.
+            </p>
+
+            <h4>Efficacité</h4>
+            <p>
+                Le montage réussit à faire ce que je voulais, mais comme mentionné ultérieurement, les problèmes de
+                stabilité réseau font qu’il n’est pas parfait. Donc, il faut un réseau assez stable pour qu’il
+                fonctionne en continu. Le VPN a aussi tendance à ralentir la vitesse du réseau, ce qui fait que mon
+                montage ne peut pas faire des tâches trop complexes.
+            </p>
+
+            <h4>Maintenabilité</h4>
+            <p>
+                Les matériaux nécessaires à mon montage sont faciles à remplacer : une visite sur Amazon et le problème
+                est réglé. Cependant, il est important de conserver un VPN (payant), ce qui, à long terme, peut devenir
+                coûteux. Mais pour des abonnements à long terme, le coût peut rester relativement bas à défaut de
+                l’utiliser.
+            </p>
+
+            <h4>Robustesse</h4>
+            <p>
+                Pour l’instant, mon montage n’a pas de boîtier, mais s’il en avait un, il serait un module solide, assez
+                facile à transporter et brancher. Je n’ai qu’une antenne assez solide et un fil USB C à brancher.
+            </p>
+
+            <h4>Potentiel de la technologie</h4>
+            <p>
+                Mon projet a un réel potentiel d’être efficace et utile. Avec les villes qui offrent des services de
+                plus en plus diversifiés et des banlieues qui s’agrandissent de plus en plus, les gens sont souvent en
+                déplacement et se connectent à toutes sortes de réseaux publics comme pour le travail, une sortie en
+                famille ou un voyage. Bien que le LTE existe, l’augmentation du coût de la vie fait que les gens se
+                tournent vers des alternatives telles que les réseaux publics pour économiser leurs données. Mon montage
+                serait parfait pour ces personnes là qui chercherait à se protéger sur les réseaux publics.
+            </p>
+
+            <h4>Avantages et inconvénients</h4>
+            <p>
+                Mon montage est excellent pour les voyages et le travail en dehors de la maison. Cependant, il ne réagit
+                pas toujours bien sur des réseaux instables. Bien que la plupart des compagnies aient des réseaux
+                stables, il se peut que, dans certaines situations à long terme, il soit nécessaire de redémarrer le
+                Raspberry Pi. Sur le marché, il existe déjà des petits routeurs portatifs. Cependant, le coût serait
+                moindre avec le Raspberry Pi et il y a toujours possibilité de le modifier sans contrainte.
+            </p>
+        </div>
+
+        <div id="conclusion" class="section content-box">
+            <h2>Conclusion</h2>
+            <p>
+                En conclusion, mon projet m’a permis de créer un appareil qui me servira lors de mes déplacements dans
+                la vie de tous les jours. Il me protège contre les attaques sur les réseaux publics et peut me permettre
+                de naviguer sans tracas. Ce projet est un succès et je le partagerai avec mes proches afin de se
+                protéger mutuellement des attaques malveillantes.
+            </p>
+        </div>
+        <div id="source" class="section content-box">
+            <p>1. <a href="https://protonvpn.com/support/vpn-config-download" target="_blank">Documentation de Proton VPN pour OpenVPN</a>
+            </p>
+            <p>2. <a href="https://www.youtube.com/watch?v=jlHWnKVpygw" target="_blank">Vidéo Youtube de NetworkChuck : my SUPER secure Raspberry Pi Router (wifi VPN travel router)</a>
+            </p>
+            <p>3. <a href="https://www.pensezcybersecurite.gc.ca/fr/ressources/mois-de-la-sensibilisation-la-cybersecurite-semaine-4-le-reseau-wi-fi" target="_blank">Publication de Pensez-y cybersecurité :</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
